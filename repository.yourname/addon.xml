@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.yourname" name="Your Addons" version="0.1.2" provider-name="You">
+	<extension point="xbmc.addon.repository" name="Your addons">
+		<info compressed="false">https://raw.githubusercontent.com/you/your_repo_folder/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/you/your_repo_folder/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/you/your_repo_folder/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Your Kodi Addons</summary>
+		<description lang="en_GB">Your Kodi repository description.</description>
+		<disclaimer lang="en_GB">This is a pretty basic template for your repository. Not all tags are included, but this is plenty for something so simple. </disclaimer>
+		<platform>all</platform>
+		<language>en</language>
+		<website>http://www.your.website.com</website>
+		<source>https://github.com/you/your_repo_folder/tree/master/repository.yourname</source>
+		<email>your@email.com</email>
+
+
+	</extension>
+</addon>
