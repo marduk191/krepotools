@@ -3,7 +3,7 @@ Kodi Repository template
 
 * Author:	marduk191 (<marduk191@gmail.com>)
 * Created:	February 6, 2016
-* Github:	<https://github.com/marduk191/kreptools>
+* Github:	<https://github.com/marduk191/krepotools>
 * Zip Download:	<https://github.com/marduk191/krepotools/archive/master.zip>
 * 
 
