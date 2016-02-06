@@ -23,7 +23,7 @@ Usage
 
 Questions, Comments, Concerns, Issues
 -------------------------------------
-If you have any of these, go ahead and [submit an issue](https://github.com/marduk191/kreptools/issues),
+If you have any of these, go ahead and [submit an issue](https://github.com/marduk191/krepotools/issues),
 
 Notes
 ------------------------
