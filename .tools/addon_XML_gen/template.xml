@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--See http://kodi.wiki/view/Addon.xml for more information -->
+<addon
+  id="plugin.video.id"
+  name="your cool addon"
+  version="1.2.3"
+  provider-name="Your name or organization">
+    
+    <!--include all libraries that your plugin will require below. This will tell Kodi what to pull for you -->
+    <!-- http://kodi.wiki/view/Addon.xml#.3Crequires.3E -->
+    <requires>
+        <import addon="xbmc.python" version="2.24.0"/>
+    </requires>
+    
+    <!-- http://kodi.wiki/view/Addon.xml#.3Cextension.3E -->
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <!-- http://kodi.wiki/view/Addon.xml#.3Cprovides.3E_element -->
+        <provides>video</provides>
+    </extension>
+    
+    <!-- Setup your human readable metadata here. Most of this is optional. -->
+    <!-- http://kodi.wiki/view/Addon.xml#xbmc.addon.metadata -->
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB"></summary>
+        <description lang="en_GB"></description>
+        <disclaimer lang="en_GB"></disclaimer>
+        <language>en</language>
+        <platform>all</platform>
+        <license></license>
+        <forum></forum>
+        <website></website>
+        <email></email>
+        <source></source>
+    </extension>
+</addon>
