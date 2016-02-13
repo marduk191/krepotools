@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 #########################################
 # Addon.xml generator
-# for Kodi addons
+# for kodi addons
 # By: marduk191
 # Email: marduk191@gmail.com
 # Github: https://github.com/marduk191
+# generate an xml in Python
 #########################################
 """
 Add your information to the User input section
-Then run addonxmlgen.py
+Then run generate.py
 Your file will be named addon.xml
 """
 
 import os
-import xml.etree.ElementTree as ET
+import lxml
+from lxml import etree
 
 ### User input ###
 ADDON_ID = "plugin.video.id2"
@@ -36,78 +38,79 @@ SOURCE_TEXT = "http://github.com/myuser"
 #################################################
 
 ### Used for parsing, DO NOT EDIT ###
-TREE = ET.parse('template.xml')
+PARSER = etree.XMLParser(remove_blank_text=True)
+TREE = etree.parse('template.xml', PARSER)
 ROOT = TREE.getroot()
 #####################################
 
-### Working with the XML values ###
+## Working with the XML values ###
 for addon in ROOT.iter('addon'):
     addon.set('id', ADDON_ID)
     addon.set('name', ADDON_NAME)
     addon.set('version', ADDON_VERSION)
     addon.set('provider-name', ADDON_PROVIDER)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for requires in ROOT.iter('import'):
     requires.set('addon', MYIMPORT)
     requires.set('version', MYIMPORT_VERS)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for extension in ROOT.iter('provides'):
     extension.text = str(EX_PROVIDES)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for description in ROOT.iter('description'):
     description.set('lang', "en_GB")
     description.text = str(DESCRIPTION_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for summary in ROOT.iter('summary'):
     summary.set('lang', "en_GB")
     summary.text = str(SUMMARY_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for disclaimer in ROOT.iter('disclaimer'):
     disclaimer.set('lang', "en_GB")
     disclaimer.text = str(DISCLAIMER_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for language in ROOT.iter('language'):
     language.text = str(LANGUAGE_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for platform in ROOT.iter('platform'):
     platform.text = str(PLATFORM_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for license in ROOT.iter('license'):
     license.text = str(LICENSE_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for forum in ROOT.iter('forum'):
     forum.text = str(FORUM_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for website in ROOT.iter('website'):
     website.text = str(WEBSITE_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for email in ROOT.iter('email'):
     email.text = str(EMAIL_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 
 for source in ROOT.iter('source'):
     source.text = str(SOURCE_TEXT)
-TREE.write('output.xml')
+TREE.write('output.xml', pretty_print=True)
 ###################################################
 
-### adding XML header because of inherited stripping above ###
+#adding XML header because of inherited stripping above
 with open('output.xml', 'r') as original:
     DATA = original.read()
 with open('addon.xml', 'w') as modified:
-	modified.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n\n" + DATA)
+	modified.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + DATA)
 
-### removing temp file ###
+#removing temp file
 os.remove("output.xml")
 
 print("complete!")
