@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #########################################
 # Addon.xml generator
-# for kodi addons
+# for Kodi addons
 # By: marduk191
 # Email: marduk191@gmail.com
 # Github: https://github.com/marduk191
@@ -9,12 +9,11 @@
 #########################################
 """
 Add your information to the User input section
-Then run generate.py
+Then run addonxml.py
 Your file will be named addon.xml
 """
 
 import os
-import lxml
 from lxml import etree
 
 ### User input ###
@@ -43,7 +42,7 @@ TREE = etree.parse('template.xml', PARSER)
 ROOT = TREE.getroot()
 #####################################
 
-## Working with the XML values ###
+### Working with the XML values ###
 for addon in ROOT.iter('addon'):
     addon.set('id', ADDON_ID)
     addon.set('name', ADDON_NAME)
@@ -104,13 +103,13 @@ for source in ROOT.iter('source'):
 TREE.write('output.xml', pretty_print=True)
 ###################################################
 
-#adding XML header because of inherited stripping above
+### adding XML header because of inherited stripping above ###
 with open('output.xml', 'r') as original:
     DATA = original.read()
 with open('addon.xml', 'w') as modified:
 	modified.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + DATA)
 
-#removing temp file
+### removing temp file ###
 os.remove("output.xml")
 
 print("complete!")
