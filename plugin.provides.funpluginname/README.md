@@ -1,0 +1,1 @@
+edit pconfig with your plugin variables, then run addonxmlgen.py
