@@ -14,26 +14,35 @@ Your file will be named addon.xml
 
 import os
 from lxml import etree
-#import pconfig
-### User input ###
+
+
+# import pconfig
+# User input #
 def getVarFromFile(filename):
+    """
+
+    :rtype: object
+    :param filename:
+    """
     import imp
     kvars = open(filename)
     global data
     data = imp.load_source('data', '', kvars)
     kvars.close()
+
+
 getVarFromFile('./pconfig')
-#### Hacky bugfix, FIX LATER###
+# Hacky bugfix, FIX LATER#
 os.remove("c")
 #################################################
 
-### Used for parsing, DO NOT EDIT ###
+# Used for parsing, DO NOT EDIT #
 PARSER = etree.XMLParser(remove_blank_text=True)
 TREE = etree.parse('template.xml', PARSER)
 ROOT = TREE.getroot()
 #####################################
 
-### Working with the XML values ###
+# Working with the XML values #
 for addon in ROOT.iter('addon'):
     addon.set('id', data.ADDON_ID)
     addon.set('name', data.ADDON_NAME)
@@ -94,13 +103,13 @@ for source in ROOT.iter('source'):
 TREE.write('output.xml', pretty_print=True)
 ###################################################
 
-### adding XML header because of inherited stripping above ###
+# adding XML header because of inherited stripping above #
 with open('output.xml', 'r') as original:
     DATA = original.read()
 with open('addon.xml', 'w') as modified:
-	modified.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + DATA)
+    modified.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + DATA)
 
-### removing temp file ###
+# removing temp file #
 os.remove("output.xml")
 
 print("complete!")
